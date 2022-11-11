@@ -1,0 +1,22 @@
+# Importing libraries
+import numpy as n
+import pandas as pd
+
+%matplotlib inline
+
+from sklearn.metrics import accuracy_score, confusion_matrix
+
+# Reading the train.csv by removing the
+# last column since it's an empty column
+
+Train = "/content/drive/MyDrive/sd for ai/Training.csv"
+
+Sym_Data = pd.read_csv(Train) # Data of Various Symptoms
+
+Sym_Data.head()
+
+Sym_Data = Sym_Data.dropna()
+Sym_Data
+
+d_C = Sym_Data["prognosis"].value_counts()
+t_ds = pd.DataFrame({"Type_Of_Disease": d_C.index,"Total_Counts": d_C.values}) # temp dataset

@@ -1,0 +1,8 @@
+from sklearn.preprocessing import LabelEncoder
+Sym_Data.rename(columns = {"prognosis":"Disease"}, inplace = True) #Renaming the column name to Disease
+Sym_Data
+en = LabelEncoder()   #For transforming the string data to num
+Sym_Data["Disease"] = en.fit_transform(Sym_Data["Disease"]) #fitting the function to transform the data
+d1 = Sym_Data.iloc[:,:-2] #Locating the samples in Dataset
+d1.shape #rows and colums of the data
+d1

@@ -1,0 +1,15 @@
+import matplotlib.pyplot as p
+import seaborn as s  #Plotting the graphs
+ Training and testing data with SVM Classifier
+m_svm = SVC()
+m_svm.fit(d1_tr, d2_tr) #Fitting model to the train data
+pre = m_svm.predict(d1_te) #Predicting 
+
+print(f"Accuracy_Score: {accuracy_score(d2_tr, m_svm.predict(d1_tr))}") #accuracy score
+
+print(f"Accuracy of SVM is : {accuracy_score(d2_te, pre)}") #model accuracy prediction
+m_cf = confusion_matrix(d2_te, pre) # Plotting the confusion matrix
+p.figure(figsize=(14,8))
+s.heatmap(m_cf,linewidths=0.30,annot=True) #Heatmap
+p.title("Confusion Matrix")
+p.show()

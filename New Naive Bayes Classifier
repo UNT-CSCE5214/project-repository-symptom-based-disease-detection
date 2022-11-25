@@ -1,0 +1,15 @@
+# training and testing Naive Bayes Classifier
+
+nb_model = GaussianNB()
+nb_model.fit(X_train, y_train)
+preds = nb_model.predict(X_test)
+cf_matrix = confusion_matrix(y_test, preds)
+plt.figure(figsize=(12,8))
+sns.heatmap(cf_matrix, annot=True)
+plt.title("Naive Bayes Classifier Confusion Matrix on Testing Data")
+plt.show()
+#adding accuracies to the output 
+
+print(f"Naive Bayes Classifier Accuracy on training data: {accuracy_score(y_train, nb_model.predict(X_train))*100}")
+
+print(f"Naive Bayes Classifier Accuracy on testing data: {accuracy_score(y_test, preds)*100}")

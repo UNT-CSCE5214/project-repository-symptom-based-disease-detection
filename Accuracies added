@@ -8,8 +8,7 @@ plt.figure(figsize=(12,8))
 sns.heatmap(cf_matrix, annot=True)
 plt.title("Naive Bayes Classifier Confusion Matrix on Testing Data")
 plt.show()
-#adding the accuracies to output
+#adding the accuracies to output in print statements
 
 print(f"Naive Bayes Classifier Accuracy on training data: {accuracy_score(y_train, nb_model.predict(X_train))*100}")
-
 print(f"Naive Bayes Classifier Accuracy on testing data: {accuracy_score(y_test, preds)*100}")

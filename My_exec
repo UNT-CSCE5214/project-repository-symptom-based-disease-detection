@@ -1,0 +1,23 @@
+en = LabelEncoder()   #For transforming the string data to num
+Sym_Data["Disease"] = en.fit_transform(Sym_Data["Disease"]) #fitting the function to transform the data
+
+d1 = Sym_Data.iloc[:,:-2] #Locating the samples in Dataset
+
+d1.shape #rows and colums of the data
+
+d1
+
+d2 = Sym_Data.iloc[:, 132] 
+
+d2
+
+from sklearn.model_selection import train_test_split, cross_val_score
+d1_tr, d1_te, d2_tr, d2_te =train_test_split(d1, d2, test_size = 0.2, random_state = 45) # d1_tr1,d2_tr1 = Xtrain,ytrain; d2_tr2,d2_te2 = Xtest,ytest
+
+print(f"Info of the Training Set : {d1_tr.shape}, {d2_tr.shape}") # training set data
+
+print(f"Info of the Testing Set : {d1_te.shape}, {d2_te.shape}") #testing data
+
+# We creating a function for validating 
+def metric_Validation(e, d1, d2):
+	  return accuracy_score(d2, e.predict(d1))

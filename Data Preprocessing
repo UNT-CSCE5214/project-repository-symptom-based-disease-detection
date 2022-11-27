@@ -28,4 +28,18 @@ X_train, X_test, y_train, y_test =train_test_split(X, y, test_size = 0.2, random
 print(f"Train: {X_train.shape}, {y_train.shape}")
 print(f"Test: {X_test.shape}, {y_test.shape}")
 
+# training and testing SVM Classifier
 
+svm_model = SVC()
+svm_model.fit(X_train, y_train)
+preds = svm_model.predict(X_test)
+
+print(f"SVM Classifier Accuracy on training data: {accuracy_score(y_train, svm_model.predict(X_train))*100}")
+
+print(f"SVM Classifier Accuracy on testing data: {accuracy_score(y_test, preds)*100}")
+
+cf_matrix = confusion_matrix(y_test, preds)
+plt.figure(figsize=(12,8))
+sns.heatmap(cf_matrix, annot=True)
+plt.title("SVM Classifier Confusion Matrix on Testing Data")
+plt.show()

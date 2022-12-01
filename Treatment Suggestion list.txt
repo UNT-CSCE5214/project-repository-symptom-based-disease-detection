@@ -1,0 +1,1 @@
+print(Details_About_Disease(final_disease_predicted))

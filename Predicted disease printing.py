@@ -1,0 +1,1 @@
+print((Disease_Prediction("Stomach Pain,Acidity,Ulcers On Tongue")))

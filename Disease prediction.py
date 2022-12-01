@@ -38,3 +38,9 @@ def Disease_Prediction(sym):
         "naive_bayes_prediction": nb_prediction,
         "svm_model_prediction": svm_prediction,
         "final_prediction":final_prediction
+		}
+		
+		 # defining the global variable for storing the value of final_prediction and we are going to use it later
+    global final_disease_predicted
+    final_disease_predicted = final_prediction
+    return predictions

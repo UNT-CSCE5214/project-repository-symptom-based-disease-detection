@@ -21,3 +21,11 @@ def Disease_Prediction(sym):
     for symptom in sym:
         index = d_dic["sym_ind"][symptom]
         input_data[index] = 1
+		
+		# reshaping the input data and converting it into suitable format for model predictions
+    input_data = np.array(input_data).reshape(1,-1)
+    
+    # generating individual outputs
+    rf_prediction = d_dic["predictions_classes"][final_rfm.predict(input_data)[0]]
+    nb_prediction = d_dic["predictions_classes"][final_nbm.predict(input_data)[0]]
+    svm_prediction = d_dic["predictions_classes"][final_svm.predict(input_data)[0]]

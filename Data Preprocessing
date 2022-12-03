@@ -70,3 +70,48 @@ sns.heatmap(cfm,cmap="YlGnBu",annot = True)
 plt.title("Combined Model Confusion Matrix on Testing Dataset")
 plt.show()
 
+
+# training all the models on whole data
+final_svm = SVC()
+final_nbm = GaussianNB()
+final_rfm = RandomForestClassifier(random_state = 18)
+final_svm.fit(X, y)
+final_nbm.fit(X, y)
+final_rfm.fit(X, y)
+
+
+# making final prediction by taking mode of all predictions
+final_prediction = mode([rf_prediction, nb_prediction, svm_prediction])[0][0]
+predictions = {
+"rfm_prediction": rf_prediction,
+"naive_bayes_prediction": nb_prediction,
+"svm_model_prediction": svm_prediction,
+"final_prediction":final_prediction
+
+
+# processing the contents of infobox present in wikipedia site
+for row in info_table_from_wikipedia.find_all("tr"):
+Sym_dis=row.find("th",{"scope":"row"})
+if Sym_dis is not None:
+symptom = str(row.find("td"))
+symptom = symptom.replace('.','')
+symptom = symptom.replace(';',',')
+symptom = symptom.replace('<b>','<b> \n')
+symptom = re.sub(r'<a.*?>','',symptom) # removing hyperlinks
+symptom = re.sub(r'</a>','',symptom) # removing hyperlinks
+symptom = re.sub(r'<[^<]+?>',' ',symptom) # all the tags
+symptom = re.sub(r'\[.*\]','',symptom) # removing citation t
+ext
+symptom = symptom.replace("&gt",">")
+ret+= Sym_dis.get_text()+" - "+symptom+"\n"
+# print(Sym_dis.get_text(),"-",symptom)
+filled = 1
+if filled:
+break
+return ret
+
+# generating individual outputs
+rf_prediction = d_dic["predictions_classes"][final_rfm.predict(input_data)[0]]
+nb_prediction = d_dic["predictions_classes"][final_nbm.predict(input_data)[0]]
+svm_prediction = d_dic["predictions_classes"][final_svm.predict(input_data)[0]]
+

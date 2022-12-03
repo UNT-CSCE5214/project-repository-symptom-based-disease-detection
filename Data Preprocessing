@@ -88,3 +88,25 @@ predictions = {
 "svm_model_prediction": svm_prediction,
 "final_prediction":final_prediction
 
+
+# processing the contents of infobox present in wikipedia site
+for row in info_table_from_wikipedia.find_all("tr"):
+Sym_dis=row.find("th",{"scope":"row"})
+if Sym_dis is not None:
+symptom = str(row.find("td"))
+symptom = symptom.replace('.','')
+symptom = symptom.replace(';',',')
+symptom = symptom.replace('<b>','<b> \n')
+symptom = re.sub(r'<a.*?>','',symptom) # removing hyperlinks
+symptom = re.sub(r'</a>','',symptom) # removing hyperlinks
+symptom = re.sub(r'<[^<]+?>',' ',symptom) # all the tags
+symptom = re.sub(r'\[.*\]','',symptom) # removing citation t
+ext
+symptom = symptom.replace("&gt",">")
+ret+= Sym_dis.get_text()+" - "+symptom+"\n"
+# print(Sym_dis.get_text(),"-",symptom)
+filled = 1
+if filled:
+break
+return ret
+

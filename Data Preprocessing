@@ -80,3 +80,11 @@ final_nbm.fit(X, y)
 final_rfm.fit(X, y)
 
 
+# making final prediction by taking mode of all predictions
+final_prediction = mode([rf_prediction, nb_prediction, svm_prediction])[0][0]
+predictions = {
+"rfm_prediction": rf_prediction,
+"naive_bayes_prediction": nb_prediction,
+"svm_model_prediction": svm_prediction,
+"final_prediction":final_prediction
+

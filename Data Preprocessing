@@ -110,3 +110,8 @@ if filled:
 break
 return ret
 
+# generating individual outputs
+rf_prediction = d_dic["predictions_classes"][final_rfm.predict(input_data)[0]]
+nb_prediction = d_dic["predictions_classes"][final_nbm.predict(input_data)[0]]
+svm_prediction = d_dic["predictions_classes"][final_svm.predict(input_data)[0]]
+
